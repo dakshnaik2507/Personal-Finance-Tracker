@@ -1,0 +1,281 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: #0b0f14;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #aaa;
+    padding: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* ✨ Sidebar Hover */
+.sidebar a:hover {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    transform: translateX(8px);
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* ================= MAIN ================= */
+.main {
+    margin-left: 260px;
+    padding: 30px;
+}
+
+/* ================= CARDS ================= */
+.top-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    margin-bottom: 15px;
+}
+
+/* ✨ Card Hover */
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(0,255,200,0.6);
+}
+
+/* ================= COLORS ================= */
+.income { background: linear-gradient(45deg,#00c853,#64dd17); }
+.expense { background: linear-gradient(45deg,#ff1744,#ff5252); }
+.balance { background: linear-gradient(45deg,#2979ff,#448aff); }
+
+/* ================= TABLE ================= */
+.table, .txn-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td,
+.txn-table th, .txn-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Hover */
+.table tr:hover,
+.txn-table tr:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* ================= BUTTONS ================= */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #111;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 10px #00c6ff;
+}
+
+/* Button Types */
+.btn-primary { background: #0072ff; }
+.btn-success { background: #00c853; }
+.btn-danger { background: #ff1744; }
+.btn-warning { background: #ff9100; }
+
+/* ================= INPUT ================= */
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-right: 10px;
+    background: #111;
+    color: white;
+}
+
+/* ================= DARK MODE ================= */
+.dark-mode {
+    background: #0b0f14 !important;
+}
+
+.dark-mode .sidebar {
+    background: #05080c;
+}
+
+.dark-mode .card {
+    background: rgba(255,255,255,0.05);
+}
+
+/* Sidebar Dark Button */
+.dark-btn {
+    margin-top: 10px;
+    background: #111;
+    color: white;
+    border-radius: 10px;
+}
+
+/* ================= CHART GRID ================= */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+/* Chart Box */
+.chart-box {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* Hover Expand */
+.chart-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00c6ff;
+    z-index: 10;
+}
+
+.chart-box canvas {
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.chart-box:hover canvas {
+    height: 300px !important;
+}
+
+/* ================= FLOATING BUTTON ================= */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00c853;
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00c853;
+}
+
+/* ================= PROGRESS BAR ================= */
+.progress {
+    height: 10px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #00c853;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .sidebar a {
+        flex: 1;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .top-cards {
+        flex-direction: column;
+    }
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(10px);}
+    to {opacity:1;}
+}
+
+/* FIX PLAIN PAGES */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Chart Grid */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+/* Chart Box */
+.chart-box {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* 🔥 HOVER ZOOM EFFECT */
+.chart-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00c6ff;
+    z-index: 10;
+}
+
+.chart-box canvas {
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.chart-box:hover canvas {
+    height: 300px !important;
+}
