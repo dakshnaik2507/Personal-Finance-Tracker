@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="card">
+    <h2>👋 Welcome, {{ current_user.username }}!</h2>
+    <p>Track your finances smartly 💰</p>
+</div>
+<div class="top-cards">
+<div class="card income">Income ₹{{income}}</div>
+<div class="card expense">Expense ₹{{expense}}</div>
+<div class="card balance">Balance ₹{{balance}}</div>
+</div>
+
+<div class="card">
+<h4>🕒 Recent Transactions</h4>
+{% for t in recent %}
+<p>{{t.category}} ₹{{t.amount}}</p>
+{% endfor %}
+</div>
+
+<div class="card">
+<h4>🎯 Goal</h4>
+{% if goal %}
+<p>{{goal.saved}} / {{goal.target}}</p>
+<div class="progress">
+<div class="progress-bar" style="width: {{(goal.saved/goal.target)*100}}%"></div>
+</div>
+{% endif %}
+</div>
+
+{% endblock %}
