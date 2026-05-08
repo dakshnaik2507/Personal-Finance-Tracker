@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Edit Transaction</h3>
+
+<div class="card">
+<form method="POST">
+
+<input type="number" name="amount" value="{{data.amount}}" required>
+
+<select name="type">
+<option value="income" {% if data.type=='income' %}selected{% endif %}>Income</option>
+<option value="expense" {% if data.type=='expense' %}selected{% endif %}>Expense</option>
+</select>
+
+<input type="text" name="category" value="{{data.category}}" required>
+
+<input type="date" name="date" value="{{data.date}}" required>
+
+<button class="btn btn-success">Update</button>
+
+</form>
+</div>
+
+{% endblock %}
