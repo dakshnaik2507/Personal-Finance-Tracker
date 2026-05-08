@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Transactions</h3>
+
+<!-- 🔍 SEARCH -->
+<form method="GET">
+<input name="search" placeholder="Search category..." value="{{ request.args.get('search','') }}">
+<button class="btn btn-primary">Search</button>
+</form>
+
+<!-- 📊 TABLE -->
+<table class="table mt-3">
+<tr>
+    <th>Date</th>
+    <th>Category</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Action</th>
+</tr>
+
+{% for t in data %}
+<tr>
+<td>{{t.date}}</td>
+<td>{{t.category}}</td>
+<td>{{t.type}}</td>
+<td>₹{{t.amount}}</td>
+<td>
+
+<!-- ✏️ EDIT -->
+<a href="/edit/{{t.id}}" class="btn btn-warning btn-sm">✏️</a>
+
+<!-- 🗑️ DELETE (FIXED WITH CONFIRM) -->
+<a href="/delete/{{t.id}}" 
+   onclick="return confirm('Are you sure you want to delete this transaction?')" 
+   class="btn btn-danger btn-sm">🗑️</a>
+
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
