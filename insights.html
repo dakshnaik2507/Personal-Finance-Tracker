@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>🧠 Insights</h2>
+
+<div class="chart-grid">
+
+<div class="chart-box"><canvas id="bar"></canvas></div>
+<div class="chart-box"><canvas id="pie"></canvas></div>
+<div class="chart-box"><canvas id="line"></canvas></div>
+<div class="chart-box"><canvas id="doughnut"></canvas></div>
+
+</div>
+
+<script>
+let labels = {{labels|safe}};
+let values = {{values|safe}};
+
+new Chart(document.getElementById("bar"), {
+ type: "bar",
+ data: { labels: labels, datasets: [{ data: values }] }
+});
+
+new Chart(document.getElementById("pie"), {
+ type: "pie",
+ data: { labels: labels, datasets: [{ data: values }] }
+});
+
+new Chart(document.getElementById("line"), {
+ type: "line",
+ data: { labels: labels, datasets: [{ data: values }] }
+});
+
+new Chart(document.getElementById("doughnut"), {
+ type: "doughnut",
+ data: { labels: labels, datasets: [{ data: values }] }
+});
+</script>
+
+{% endblock %}
