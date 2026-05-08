@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Reports</h3>
+
+<form method="POST">
+<input type="date" name="start">
+<input type="date" name="end">
+<button class="btn btn-primary">Filter</button>
+</form>
+
+<table class="table mt-3">
+{% for t in data %}
+<tr>
+<td>{{t.date}}</td>
+<td>{{t.category}}</td>
+<td>{{t.amount}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
