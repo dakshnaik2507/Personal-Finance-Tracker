@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>🎯 Saving Goal</h2>
+
+<div class="card">
+<form method="POST">
+    <input type="number" name="target" placeholder="Target">
+    <input type="number" name="saved" placeholder="Saved">
+    <button class="btn-success">Save</button>
+</form>
+</div>
+
+{% if goal %}
+<div class="card">
+    <h4>Progress</h4>
+    <p>{{goal.saved}} / {{goal.target}}</p>
+
+    <div class="progress">
+        <div class="progress-bar" style="width: {{(goal.saved/goal.target)*100}}%"></div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
